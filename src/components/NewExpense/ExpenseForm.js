@@ -3,9 +3,9 @@ import "./ExpenseForm.css";
 import ErrorModal from "../UI/ErrorModal";
 
 const ExpenseForm = (props) => {
-  const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("");
-  const [enteredDate, setEnteredDate] = useState("");
+  // const [enteredTitle, setEnteredTitle] = useState("");
+  // const [enteredAmount, setEnteredAmount] = useState("");
+  // const [enteredDate, setEnteredDate] = useState("");
 
   // Other Approch
   // const [userInput, setUserInput] = useState({
@@ -89,9 +89,9 @@ const ExpenseForm = (props) => {
       amount: +amountRef,
       date: new Date(dateRef),
     };
-    setEnteredTitle(titleRef);
-    setEnteredAmount(amountRef);
-    setEnteredDate(dateRef);
+    // setEnteredTitle(titleRef);
+    // setEnteredAmount(amountRef);
+    // setEnteredDate(dateRef);
 
     props.onSaveExpenseData(expenseDate);
     titleInputRef.current.value = "";
