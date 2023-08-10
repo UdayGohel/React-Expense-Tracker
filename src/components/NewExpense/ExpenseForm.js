@@ -57,14 +57,21 @@ const ExpenseForm = (props) => {
     const amountRef = amountInputRef.current.value;
     const dateRef = dateInputRef.current.value;
 
-    if (titleRef.trim().length === 0 || amountRef.trim().length === 0) {
+    if (titleRef.trim().length === 0) {
       setError({
         title: "Invalid Input",
-        message:
-          "Please enter a valid Input !! Amount and Title Can not be Empty ",
+        message: "Please enter a valid Title !! Title Can not be Empty ",
       });
       return;
     }
+    if (amountRef.trim().length === 0) {
+      setError({
+        title: "Invalid Input",
+        message: "Please enter a valid Amount !! Amount Can not be Empty ",
+      });
+      return;
+    }
+
     if (+amountRef < 1) {
       setError({
         title: "Invalid Amount",
@@ -76,10 +83,11 @@ const ExpenseForm = (props) => {
 
     const date = new Date();
     const date2 = new Date(dateRef);
-    if (date2 > date) {
+    if (date2 > date || dateRef === "") {
       setError({
         title: "Invalid Date",
-        message: "Date must be Previous or Today Date   (non-empty values).",
+        message:
+          "Date must be Previous or Today Date and Date Can not be Empty.",
       });
       return;
     }
@@ -130,7 +138,7 @@ const ExpenseForm = (props) => {
             <label htmlFor="amount">Amount</label>
             <input
               id="amount"
-              type="text"
+              type="number"
               min="0.01"
               step="0.01"
               // value={enteredAmount}
